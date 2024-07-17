@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
+using ModelViewer;
 
 namespace MvvmDemo
 {
@@ -29,8 +30,8 @@ namespace MvvmDemo
 		{
 			this.Title = "MVVM demo";
 			this.Objects = new ObservableCollection<Visual3D>();
-			//this.AddCommand = new DelegateCommand(this.Add, this.CanAdd);
-			//this.RemoveCommand = new DelegateCommand(this.Remove, this.CanRemove);
+			this.AddCommand = new DelegateCommand(this.Add, this.CanAdd);
+			this.RemoveCommand = new DelegateCommand(this.Remove, this.CanRemove);
 
 			// Initialize with two objects
 			this.Add();

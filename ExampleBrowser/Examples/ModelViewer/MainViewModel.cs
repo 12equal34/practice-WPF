@@ -8,6 +8,8 @@ using System.Windows.Media.Media3D;
 using System.Windows.Threading;
 
 using HelixToolkit.Wpf;
+using System.IO;
+using System.Diagnostics;
 
 namespace ModelViewer
 {
@@ -151,7 +153,11 @@ namespace ModelViewer
 
 		private async void FileOpen()
 		{
-			this.currentModelPath = this.fileDialogService.OpenFileDialog("models", null, OpenFileFilter, ".3ds");
+			string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+			string OpenPath = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
+			Debug.WriteLine($"{this.GetType().FullName}.FileOpen method uses Path: {OpenPath}");
+
+			this.currentModelPath = this.fileDialogService.OpenFileDialog(OpenPath, null, OpenFileFilter, ".3ds");
 			this.CurrentModel = await this.LoadAsync(this.CurrentModelPath, true);
 			this.ApplicationTitle = string.Format(TitleFormatString, this.CurrentModelPath);
 			this.viewport.ZoomExtents(0);

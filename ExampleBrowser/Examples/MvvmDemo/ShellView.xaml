@@ -4,12 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MvvmDemo"
+        xmlns:h="http://helix-toolkit.org/wpf"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="480" Width="640">
     <Window.DataContext>
         <local:ShellViewModel/>
     </Window.DataContext>
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Add" Command="{Binding AddCommand}"/>
+            <MenuItem Header="_Remove" Command="{Binding RemoveCommand}"/>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Objects.Count, StringFormat='{}{0} items'}"/>
+            </StatusBarItem>
+        </StatusBar>
+        <ListBox DockPanel.Dock="Left" Width="200" Padding="2"
+                 ItemsSource="{Binding Objects}"/>
+        <h:HelixViewport3D Background="{h:LinearGradientBrush Gray,White}"
+            ItemsSource="{Binding Objects}"/>
+    </DockPanel>
 </Window>
