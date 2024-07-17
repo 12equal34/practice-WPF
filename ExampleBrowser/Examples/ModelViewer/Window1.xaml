@@ -1,0 +1,59 @@
+﻿<Window x:Class="ModelViewer.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+        xmlns:modelViewer="clr-namespace:ModelViewer"
+        Title="{Binding ApplicationTitle}" Height="480" Width="640" Background="Black">
+    <Window.Resources>
+        <Style x:Key="TypeNameTextStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="NameTextStyle" TargetType="TextBlock">
+            <Setter Property="Padding" Value="8 0 0 0"/>
+        </Style>
+
+        <HierarchicalDataTemplate DataType="{x:Type modelViewer:VisualViewModel}" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="8" Height="8" Margin="4" Fill="{Binding Brush}" Stroke="Black"/>
+                    <TextBlock Text="{Binding TypeName}" Style="{StaticResource TypeNameTextStyle}"/>
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource NameTextStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open..." Command="{Binding FileOpenCommand}"/>
+                <MenuItem Header="_Export..." Command="{Binding FileExportCommand}"/>
+                <Separator/>
+                <MenuItem Header="_Exit" Command="{Binding FileExitCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Copy XAML" Command="{Binding EditCopyXamlCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="_Zoom extents" Command="{Binding ViewZoomExtentsCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                MenuItem Header="_About" Command="{Binding HelpAboutCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <DockPanel DockPanel.Dock="Left" Width="400">
+            <Slider Value="{Binding Expansion}" Minimum="1" Maximum="2" DockPanel.Dock="Bottom"/>
+            <TextBox DockPanel.Dock="Bottom" Height="200" Text="{Binding Info}"/>
+            <TreeView ItemsSource="{Binding Elements}"/>
+        </DockPanel>
+
+        <helix:HelixViewport3D x:Name="view1" CameraRotationMode="Trackball" ModelUpDirection="0,1,0">
+            <ModelVisual3D x:Name="root1">
+                <!--<helix:CubeVisual3D Fill="Red"/>
+                <helix:GridLinesVisual3D/>-->
+                <helix:DefaultLights/>
+                <ModelVisual3D Content="{Binding CurrentModel}"/>
+            </ModelVisual3D>
+        </helix:HelixViewport3D>
+    </DockPanel>
+</Window>
