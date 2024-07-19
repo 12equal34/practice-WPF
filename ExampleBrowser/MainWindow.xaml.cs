@@ -4,6 +4,7 @@ namespace ExampleBrowser
 {
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
+	using System.Diagnostics;
 	using System.IO;
 	using System.Linq;
 	using System.Reflection;
@@ -22,6 +23,9 @@ namespace ExampleBrowser
 			this.DataContext = this;
 			var allExamples = this.GetExamples(this.GetType().Assembly).OrderBy(ex => ex.Title).ToArray();
 			this.Examples = new ObservableCollection<Example>(allExamples);
+			foreach (var example in this.Examples) {
+				Debug.WriteLine(example.Title);
+			}
 		}
 
 
@@ -60,16 +64,13 @@ namespace ExampleBrowser
 		public void ListBoxMouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
 			var lb = (ListBox)sender;
-			var example = lb.SelectedItem as Example;
-			if (example != null)
-			{
+			if (lb.SelectedItem is Example example) {
 				var window = example.Create();
 				window.Show();
 
 				window.KeyDown += (s, args) =>
 				{
-					if (args.Key == Key.F12)
-					{
+					if (args.Key == Key.F12) {
 						CreateThumbnail(window, 120, Path.Combine(@"..\..\Images\", example.ThumbnailFileName));
 						MessageBox.Show(window, "Demo image updated. Now add `" + example.ThumbnailFileName + "` as a resource in the Images folder in the ExampleBrowser project.");
 						e.Handled = true;

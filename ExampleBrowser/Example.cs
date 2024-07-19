@@ -30,10 +30,11 @@ namespace ExampleBrowser
 			this.MainWindowType = mainWindowType;
 			this.Title = title ?? mainWindowType.Namespace;
 			this.Description = description;
+			
 			try
 			{
-				this.Thumbnail =
-					new BitmapImage(new Uri("pack://application:,,,/Images/" + this.ThumbnailFileName));
+				var ThumbnailURI = new Uri("pack://application:,,,/Images/" + this.ThumbnailFileName);
+				this.Thumbnail = new BitmapImage(ThumbnailURI);
 			}
 			catch (Exception e)
 			{

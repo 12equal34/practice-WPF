@@ -50,10 +50,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="3DTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\3DTools.1.0.0\lib\net48\3DTools.dll</HintPath>
+    </Reference>
     <Reference Include="HelixToolkit.Wpf, Version=2.25.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
-      <HintPath>packages\HelixToolkit.Wpf.2.25.0\lib\net462\HelixToolkit.Wpf.dll</HintPath>
+      <HintPath>..\packages\HelixToolkit.Wpf.2.25.0\lib\net462\HelixToolkit.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="HelixToolkit.Wpf.Input, Version=2.25.0.0, Culture=neutral, PublicKeyToken=52aa3500039caf0d, processorArchitecture=MSIL">
+      <HintPath>..\packages\HelixToolkit.Wpf.Input.2.25.0\lib\net462\HelixToolkit.Wpf.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyTools, Version=3.1.0.0, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyTools.3.1.0\lib\net45\PropertyTools.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyTools.Wpf, Version=3.1.0.0, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyTools.Wpf.3.1.0\lib\net45\PropertyTools.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -62,8 +75,10 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    <Reference Include="System.Xaml" />
+    <Reference Include="TDx.TDxInput, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3bbf7d14b78dc9f5, processorArchitecture=MSIL">
+      <HintPath>..\packages\HelixToolkit.Wpf.Input.2.25.0\lib\net462\TDx.TDxInput.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -84,12 +99,30 @@
     <Compile Include="Examples\ModelViewer\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Examples\MvvmCameraDemo\BindingProxy.cs" />
+    <Compile Include="Examples\MvvmCameraDemo\Observable.cs" />
+    <Compile Include="Examples\MvvmCameraDemo\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\MvvmCameraDemo\ShellViewModel.cs" />
+    <Compile Include="Examples\MvvmCameraDemo\ViewportView.xaml.cs">
+      <DependentUpon>ViewportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\MvvmCameraDemo\ViewportViewModel.cs" />
     <Compile Include="Examples\MvvmDemo\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Examples\MvvmDemo\ShellViewModel.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Page Include="Examples\ModelViewer\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Examples\MvvmCameraDemo\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Examples\MvvmCameraDemo\ViewportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +200,9 @@
   <ItemGroup>
     <Resource Include="Images\ModelViewer_small.png" />
     <Resource Include="Images\MvvmDemo_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MvvmCameraDemo_small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
