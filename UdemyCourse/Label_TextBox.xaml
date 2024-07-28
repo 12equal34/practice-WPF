@@ -1,0 +1,44 @@
+﻿<Window x:Class="UdemyCourse.Label_TextBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UdemyCourse"
+        mc:Ignorable="d"
+        Title="Label" Height="450" Width="800">
+    <StackPanel>
+        <Label>
+            Label은 TextBlock과 비슷하지만 Text 속성이 아닌 Content 속성을 사용합니다.
+        </Label>
+        <Label Content="Label 입니다." Foreground="Blue"/>
+        <TextBlock Text="TextBlock 입니다." Foreground="Brown"/>
+        
+        <Label BorderBrush="Black" BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="50" Source="https://www.clipartmax.com/png/small/247-2471318_to-ensure-the-perfect-size-for-your-fixtures-gobos-envelope-icon-png.png"/>
+                <AccessText Text="Message" VerticalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+        </Label>
+        
+        <TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Image Width="50" Source="https://www.clipartmax.com/png/small/247-2471318_to-ensure-the-perfect-size-for-your-fixtures-gobos-envelope-icon-png.png"/>
+                <AccessText Text="Message" VerticalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+        </TextBlock>
+
+        <TextBox Text="Read-Only TextBox입니다." IsReadOnly="True" BorderThickness="0"/>
+        <TextBox FontSize="20" 
+                 Margin="5" 
+                 BorderBrush="Black" 
+                 BorderThickness="2"
+                 Background="LightSkyBlue"
+                 Foreground="White"
+                 Width="200" HorizontalAlignment="Left"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 AcceptsTab="True"
+                 SpellCheck.IsEnabled="True"
+                 Language="ko-KR"/>
+    </StackPanel>
+</Window>

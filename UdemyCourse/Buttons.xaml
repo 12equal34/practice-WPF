@@ -1,0 +1,86 @@
+﻿<Window x:Class="UdemyCourse.Buttons"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UdemyCourse"
+        mc:Ignorable="d"
+        Title="Buttons" Height="600" Width="800">
+    <StackPanel>
+        <Button Content="Click Me!"
+                ToolTip="버튼입니다."
+                Name="myButton"
+                FontStyle="Italic"
+                FontWeight="Bold"
+                Click="myButton_Click"
+                MouseEnter="myButton_MouseEnter"
+                MouseLeave="myButton_MouseLeave"
+                Width="100" Height="50"
+                HorizontalAlignment="Left"/>
+        <Label Content="Hello World!"
+               Name="myLabel"
+               FontSize="20"
+               Foreground="Blue"/>
+
+        <Label Content="1. 가장 좋아하는 과일을 선택해주세요."
+               FontWeight="Bold"
+               FontSize="15"/>
+        <RadioButton GroupName="과일선택지" Content="사과"/>
+        <RadioButton GroupName="과일선택지" Content="오렌지"/>
+        <RadioButton GroupName="과일선택지" Content="딸기"/>
+        <RadioButton GroupName="과일선택지" Content="메론"/>
+        <RadioButton GroupName="과일선택지" Content="수박"/>
+
+        <Label Content="2. 가장 좋아하는 음악을 선택해주세요."
+               FontWeight="Bold"
+               FontSize="15"/>
+        <RadioButton GroupName="음악선택지" Content="클래식"/>
+        <RadioButton GroupName="음악선택지" Content="재즈"/>
+        <RadioButton GroupName="음악선택지" Content="발라드"/>
+        <RadioButton GroupName="음악선택지" Content="힙합"/>
+        <RadioButton GroupName="음악선택지" Content="R&amp;B"/>
+
+        <Label Content="3. 이미지를 선택해주세요."
+               FontWeight="Bold"
+               FontSize="15"/>
+        <RadioButton GroupName="그림선택지"
+                     Checked="rbImage_Checked"
+                     Unchecked="rbImage_Unchecked"
+                     VerticalContentAlignment="Center"
+                     FontSize="20"
+                     Margin="5">
+            <WrapPanel>
+                <Image Height="40" Source="https://th.bing.com/th/id/OIP.00XZ_94R8Kg4uBL66xeh9AHaHa?w=197"/>
+                <Label Content="편지" VerticalAlignment="Center"/>
+            </WrapPanel>
+        </RadioButton>
+        <RadioButton GroupName="그림선택지"
+                     Checked="rbImage_Checked"
+                     Unchecked="rbImage_Unchecked"
+                     VerticalContentAlignment="Center"
+                     FontSize="20"
+                     Margin="5">
+            <WrapPanel>
+                <Image Height="40" Source="https://th.bing.com/th/id/OIP.oY4LOdSfMhw9R3ryb_OICAHaHc?w=197"/>
+                <Label Content="스타벅스" VerticalAlignment="Center"/>
+            </WrapPanel>
+        </RadioButton>
+        <RadioButton GroupName="그림선택지"
+                     Checked="rbImage_Checked"
+                     Unchecked="rbImage_Unchecked"
+                     VerticalContentAlignment="Center"
+                     FontSize="20"
+                     Margin="5">
+            <WrapPanel>
+                <Image Height="40" Source="https://th.bing.com/th/id/OIP.3hiy5UXBT52JU7sYJP4k8AHaHa?w=197"/>
+                <Label Content="웹사이트" VerticalAlignment="Center"/>
+            </WrapPanel>
+        </RadioButton>
+        <RadioButton GroupName="그림선택지"
+                     Content="선택 안함"
+                     IsChecked="True"
+                     VerticalContentAlignment="Center"
+                     FontSize="20"
+                     Margin="5"/>
+    </StackPanel>
+</Window>
